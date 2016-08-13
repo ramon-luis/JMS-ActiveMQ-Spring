@@ -9,26 +9,19 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.MimeMappings;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import IM.MessageProducer.USER;
-import org.springframework.jms.annotation.EnableJms;
-import org.springframework.jms.annotation.JmsListener;
-import org.springframework.stereotype.Component;
+
 
 /**
  * Created by RAM0N on 8/13/16.
  */
 
-@SpringBootApplication
-@EnableJms
+//@SpringBootApplication
+//@EnableJms
 public class FXMLController implements Initializable {
 
     @FXML private HBox mHBox;
@@ -93,24 +86,25 @@ public class FXMLController implements Initializable {
 
     private void postMessageOwnWindow(String sMessage, USER user) {
         if (user == USER.BOB) {
-            mMessagesRight.add(sMessage);
+            mMessagesRight.add("me: " + sMessage);
         } else {
-            mMessagesLeft.add(sMessage);
+            mMessagesLeft.add("me: " + sMessage);
         }
     }
 
     private void updateMessageWindows() {
         lstLeft.setItems(mMessagesLeft);
         lstRight.setItems(mMessagesRight);
+
     }
 
 
     // called from message consumer
     void processNewMessage(String sMessage, String sRecipient) {
         if (sRecipient.equals(USER.BOB.toString())) {
-            mMessagesRight.add(sMessage);
+            mMessagesLeft.add("Sally: " + sMessage);
         } else {
-            mMessagesLeft.add(sMessage);
+            mMessagesRight.add("Bob: " + sMessage);
         }
         updateMessageWindows();
     }

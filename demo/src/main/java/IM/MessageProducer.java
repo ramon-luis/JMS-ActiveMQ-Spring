@@ -4,7 +4,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
-import javax.jms.ObjectMessage;
 
 /**
  * Created by RAM0N on 8/12/16.

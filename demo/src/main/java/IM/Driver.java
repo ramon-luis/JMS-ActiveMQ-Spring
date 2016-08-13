@@ -1,6 +1,7 @@
 package IM;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,7 +25,6 @@ import java.io.File;
 public class Driver extends Application{
 
         private static String[] args;
-        private FXMLController controller;
 
         public static void main(String[] args) {
             Driver.args = args;
@@ -35,11 +35,10 @@ public class Driver extends Application{
         public void start(Stage stage) throws Exception {
 
             ConfigurableApplicationContext context = SpringApplication.run(IM.Driver.class, args);
-            // Clean out any ActiveMQ data from a previous run
             FileSystemUtils.deleteRecursively(new File("activemq-data"));
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
-            controller = FXMLController.getInstance();
+            FXMLController controller = FXMLController.getInstance();
             controller.setContext(context);
             loader.setController(controller);
             Parent root = loader.load();
@@ -49,6 +48,12 @@ public class Driver extends Application{
 
             stage.setTitle("Chat");
             stage.setScene(scene);
+            stage.setOnCloseRequest(event -> {
+                Platform.exit();
+                FileSystemUtils.deleteRecursively(new File("activemq-data"));
+                context.close();
+                System.exit(0);
+            });
             stage.show();
         }
 
