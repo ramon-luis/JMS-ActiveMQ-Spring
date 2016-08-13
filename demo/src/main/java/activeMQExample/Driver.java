@@ -3,10 +3,11 @@ package activeMQExample;
 /**
  * Hello world!
  */
-public class MainDriver {
+public class Driver {
 
     public static void main(String[] args) throws Exception {
 
+        // messages to send: common kent jones teaches foreign language
         String sMessage1 = "Hola, Como estas?";
         String sMessage2 = "Konnichiwa";
         String sMessage3 = "Pardon my French";

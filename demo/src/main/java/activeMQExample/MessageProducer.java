@@ -6,7 +6,7 @@ import javax.jms.*;
 /**
  * Created by RAM0N on 8/12/16.
  */
-public class MessageProducer implements Runnable {
+class MessageProducer implements Runnable {
 
     private static final String QUEUE_NAME = "DON'T MIND";
 
@@ -14,7 +14,7 @@ public class MessageProducer implements Runnable {
     String mMessage;
 
     // constructor
-    public MessageProducer(String sMessage) {
+    MessageProducer(String sMessage) {
         mMessage = sMessage;
     }
 
@@ -50,8 +50,7 @@ public class MessageProducer implements Runnable {
             // Clean up
             session.close();
             connection.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Caught: " + e);
             e.printStackTrace();
         }
