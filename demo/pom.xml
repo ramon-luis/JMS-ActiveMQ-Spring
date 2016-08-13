@@ -19,49 +19,41 @@
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!--activeMQ dependencies-->
 		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-activemq</artifactId>-->
+			<!--<groupId>org.apache.activemq</groupId>-->
+			<!--<artifactId>activemq-all</artifactId>-->
+			<!--<version>5.14.0</version>-->
 		<!--</dependency>-->
 
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-test</artifactId>-->
-			<!--<scope>test</scope>-->
-		<!--</dependency>-->
-
-		<!--activeMQ dependency-->
-
-		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
+        <!--spring boot activeMQ dependencies-->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-all</artifactId>
-			<version>5.14.0</version>
+			<artifactId>activemq-broker</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-kahadb-store -->
 		<dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-kahadb-store</artifactId>
 			<version>5.14.0</version>
 		</dependency>
 
-
-
-
-
-
-
 	</dependencies>
-
-
-
 
 	<build>
 		<plugins>
