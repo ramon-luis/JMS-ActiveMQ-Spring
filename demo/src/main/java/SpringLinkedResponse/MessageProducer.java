@@ -1,17 +1,15 @@
-package IM;
+package SpringLinkedResponse;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
-
 /**
- * Created by RAM0N on 8/12/16.
+ * Created by RAM0N on 8/13/16.
  */
+
 class MessageProducer {
 
-    public enum USER {BOB, SALLY}
-    private final String QUEUE = "msgQueue";
     private JmsTemplate mJmsTemplate;
 
     // constructor
@@ -19,16 +17,15 @@ class MessageProducer {
         mJmsTemplate = context.getBean(JmsTemplate.class);
     }
 
-    public void sendMessage(String sMessage, USER recipient) {
+    void sendMessage(String sQueueName, String sMessage) {
         // create the message
-        MessageCreator messageCreator = session -> session.createTextMessage(recipient.toString() + ":" + sMessage);
-
+        MessageCreator messageCreator = session -> session.createTextMessage(sMessage);
         // print to console
         System.out.println();
-        System.out.println("Sending message: " + sMessage + " (thread: " + Thread.currentThread().getName() + ")");
+        System.out.println("Sending message: (Q:" + sQueueName + ")\n" + sMessage);
 
         // send the message
-        mJmsTemplate.send(QUEUE, messageCreator);
+        mJmsTemplate.send(sQueueName, messageCreator);
     }
 
 }

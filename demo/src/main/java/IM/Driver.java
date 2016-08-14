@@ -48,6 +48,14 @@ public class Driver extends Application{
 
             stage.setTitle("Chat");
             stage.setScene(scene);
+
+            System.out.println();
+            System.out.println("**************************************");
+            System.out.println("JMS Implementation for Messaging App");
+            System.out.println("Queue per User -> JMS broker directs messages");
+            System.out.println("**************************************");
+            System.out.println();
+            
             stage.setOnCloseRequest(event -> {
                 Platform.exit();
                 FileSystemUtils.deleteRecursively(new File("activemq-data"));

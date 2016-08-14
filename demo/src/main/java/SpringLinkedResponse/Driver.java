@@ -1,4 +1,4 @@
-package SpringExample;
+package SpringLinkedResponse;
 
 import java.io.File;
 
@@ -18,14 +18,12 @@ import org.springframework.util.FileSystemUtils;
 @EnableJms
 public class Driver {
 
-    private static final String QUEUE_NAME = "DRAKE'S BEST PICKUP LINES";
+    private static final String QUEUE_NAME = "LINE 1";
 
     public static void main(String[] args) {
 
-        // string to send: Drake's best pickup lines
-        String sMessage1 = "I need one dance";
-        String sMessage2 = "You used to call me on my cell phone";
-
+        // string to send
+        String sMessage1 = "When I see";
 
         // Clean out any ActiveMQ data from a previous run
         FileSystemUtils.deleteRecursively(new File("activemq-data"));
@@ -33,20 +31,26 @@ public class Driver {
         // Launch the application
         ConfigurableApplicationContext context = SpringApplication.run(Driver.class, args);
 
-        // Send a message
         System.out.println();
         System.out.println("**************************************");
-        System.out.println("How people in Drake's songs reply to his best pickup lines");
+        System.out.println("Will Ferrell shares a sentimental poem");
         System.out.println("**************************************");
         System.out.println();
 
+        // Send a message
         MessageProducer msgProducer = new MessageProducer(context);
         msgProducer.sendMessage(QUEUE_NAME, sMessage1);
-        msgProducer.sendMessage(QUEUE_NAME, sMessage2);
 
+        try {
+            Thread.sleep(1500);
+        } catch (Exception e) {
+            System.out.println("error sleeping");
+        }
         // close the application and flush files
         context.close();
         FileSystemUtils.deleteRecursively(new File("activemq-data"));
+        System.exit(0);
+
     }
 
 

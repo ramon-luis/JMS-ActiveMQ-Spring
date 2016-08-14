@@ -1,5 +1,6 @@
 package IM;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -70,8 +71,9 @@ public class FXMLController implements Initializable {
     }
 
     private void sendMessage(String sMessage, USER user) {
-        msgSender.sendMessage(sMessage, user, this);
-        postMessageOwnWindow(sMessage, user);
+        String sText = (sMessage == null) ? "" : sMessage;
+        msgSender.sendMessage(sText, user);
+        postMessageOwnWindow(sText, user);
         clearTextEntry(user);
         updateMessageWindows();
     }
@@ -101,12 +103,16 @@ public class FXMLController implements Initializable {
 
     // called from message consumer
     void processNewMessage(String sMessage, String sRecipient) {
-        if (sRecipient.equals(USER.BOB.toString())) {
-            mMessagesLeft.add("Sally: " + sMessage);
-        } else {
-            mMessagesRight.add("Bob: " + sMessage);
-        }
-        updateMessageWindows();
+        Platform.runLater(() -> {
+            if (sRecipient.equals(USER.BOB.toString())) {
+                mMessagesLeft.add("Sally: " + sMessage);
+            } else {
+                mMessagesRight.add("Bob: " + sMessage);
+            }
+            updateMessageWindows();
+
+        });
+
     }
 
 
