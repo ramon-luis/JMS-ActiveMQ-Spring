@@ -6,21 +6,22 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by RAM0N on 8/12/16.
+ * MessageReceiver is associated with a specific queue.
+ * Spring annotations do the heavy lifting of connecting & listening.
  */
 
 @Component
-public class MessageConsumer {
+public class MessageReceiver {
 
+    @Autowired
+    ConfigurableApplicationContext context;  // get a copy of the current context
+
+    // define the queue
     private static final String QUEUE_NAME = "DRAKE'S BEST PICKUP LINES";
 
-    // get a copy of the current context
-    @Autowired
-    ConfigurableApplicationContext context;
-
-    // do something with the message
-    @JmsListener(destination = QUEUE_NAME)
+    @JmsListener(destination = QUEUE_NAME)  // listen for the message
     public void receiveMessage(String message) {
+        // do message actions
         String sReply = "...";
         if (message.equals("I need one dance")) {
             sReply = "I like your style";
@@ -28,6 +29,7 @@ public class MessageConsumer {
             sReply = "... (no answer: Drake did you wrong)";
         }
 
+        // print to console
         System.out.println("Received: " + message);
         System.out.println("Reply: " + sReply);
         System.out.println();

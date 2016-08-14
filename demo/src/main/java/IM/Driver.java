@@ -55,7 +55,7 @@ public class Driver extends Application{
             System.out.println("Queue per User -> JMS broker directs messages");
             System.out.println("**************************************");
             System.out.println();
-            
+
             stage.setOnCloseRequest(event -> {
                 Platform.exit();
                 FileSystemUtils.deleteRecursively(new File("activemq-data"));

@@ -1,24 +1,27 @@
-package activeMQExample;
+package activeMQThreaded;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 
 /**
- * Created by RAM0N on 8/12/16.
+ * MessageSender is associated with a specific queue.  Once created, the object can send messages to the associated
+ * queue.  This implementation is created to send a single message, after which this specific MessageSender object
+ * is shutdown.
  */
-class MessageProducer implements Runnable {
 
-    private static final String QUEUE_NAME = "DON'T MIND";
+class MessageSender implements Runnable {
 
     // variable to store message
-    String mMessage;
+    private String mMessage;
+    private String mQueueName;
 
     // constructor
-    MessageProducer(String sMessage) {
+    MessageSender(String sQueueName, String sMessage) {
         mMessage = sMessage;
+        mQueueName = sQueueName;
     }
 
-
+    // implements run in order to pass to individual thread
     public void run() {
         try {
             // Create a ConnectionFactory
@@ -32,24 +35,27 @@ class MessageProducer implements Runnable {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             // Create the destination (Topic or Queue)
-            Destination destination = session.createQueue(QUEUE_NAME);
+            Destination destination = session.createQueue(mQueueName);
 
             // Create a MessageProducer from the Session to the Topic or Queue
-            javax.jms.MessageProducer producer = session.createProducer(destination);
+            MessageProducer producer = session.createProducer(destination);
             producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
 
             // Create a message
-            String text = mMessage; //+ " From: " + Thread.currentThread().getName();
+            String text = mMessage;
             TextMessage message = session.createTextMessage(text);
 
             // Tell the producer to send the message
             producer.send(message);
+
+            // print to console
             System.out.println();
             System.out.println(Thread.currentThread().getName() + " Sent message: " + text);
 
             // Clean up
             session.close();
             connection.close();
+
         } catch (Exception e) {
             System.out.println("Caught: " + e);
             e.printStackTrace();

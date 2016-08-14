@@ -1,20 +1,26 @@
-package activeMQExample;
+package activeMQThreaded;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 
 /**
- * Created by RAM0N on 8/12/16.
+ * MessageReceiver is associated with a specific queue.  Once created, it listens for a message at the associated
+ * queue and then processes the message once received.  This implementation is created to receive a single message,
+ * after which this specific MessageReceiver object is shutdown.
  */
 
-public class MessageConsumer implements Runnable, ExceptionListener {
+class MessageReceiver implements Runnable, ExceptionListener {
 
-    private static final String QUEUE_NAME = "DON'T MIND";
-//    private static final String QUEUE_NAME = "I DO MIND";
+    private String mQueueName;
 
+    // constructor
+    MessageReceiver(String sQueueName) {
+        this.mQueueName = sQueueName;
+    }
+
+    // implements run in order to pass to individual thread
     public void run() {
         try {
-
             // Create a ConnectionFactory
             ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost");
 
@@ -28,7 +34,7 @@ public class MessageConsumer implements Runnable, ExceptionListener {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
             // Create the destination (Topic or Queue)
-            Destination destination = session.createQueue(QUEUE_NAME);
+            Destination destination = session.createQueue(mQueueName);
 
             // Create a MessageConsumer from the Session to the Topic or Queue
             javax.jms.MessageConsumer consumer = session.createConsumer(destination);
@@ -41,20 +47,23 @@ public class MessageConsumer implements Runnable, ExceptionListener {
                 String text = textMessage.getText();
                 System.out.println();
                 System.out.println(Thread.currentThread().getName() + " Received: " + text);
-                if (text.equals("Pardon my French")) {
-                    System.out.println(Thread.currentThread().getName() + " Reply: Bonjour Madame");
-                } else if (text.equals("Sak pase")) {
-                    System.out.println(Thread.currentThread().getName() + " Reply: N'ap boule");
 
-                } else {
-                    System.out.println(Thread.currentThread().getName() + " Reply: ...");
-
+                // process the text
+                switch (text) {
+                    case "Pardon my French":
+                        System.out.println(Thread.currentThread().getName() + " Reply: Bonjour Madame");
+                        break;
+                    case "Sak pase":
+                        System.out.println(Thread.currentThread().getName() + " Reply: N'ap boule");
+                        break;
+                    default:
+                        System.out.println(Thread.currentThread().getName() + " Reply: ...");
+                        break;
                 }
                 System.out.println();
-            } else {
-                System.out.println(Thread.currentThread().getName() + " Received: " + message);
             }
 
+            // clean up
             consumer.close();
             session.close();
             connection.close();
@@ -64,6 +73,7 @@ public class MessageConsumer implements Runnable, ExceptionListener {
         }
     }
 
+    // error handling
     public synchronized void onException(JMSException ex) {
         System.out.println("JMS Exception occured.  Shutting down client.");
     }

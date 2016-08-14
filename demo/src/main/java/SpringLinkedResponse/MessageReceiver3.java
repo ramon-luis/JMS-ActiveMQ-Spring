@@ -9,26 +9,26 @@ import org.springframework.util.FileSystemUtils;
 import java.io.File;
 
 /**
- * Created by RAM0N on 8/12/16.
+ * MessageReceiver is associated with a specific queue.
+ * Spring annotations do the heavy lifting of connecting & listening.
  */
 
 @Component
-public class MessageConsumer3 {
+public class MessageReceiver3 {
 
+    // define the queue: no outgoing, last stop
     private static final String INCOMING_QUEUE = "LINE 3";
 
-    // get a copy of the current context
     @Autowired
-    ConfigurableApplicationContext context;
+    ConfigurableApplicationContext context;  // get a copy of the current context
 
-    // do something with the message
-    @JmsListener(destination = INCOMING_QUEUE)
+    @JmsListener(destination = INCOMING_QUEUE)  // listen for message
     public void receiveMessage(String message) {
+        // do message actions
         String sLine3 = "who did this to you?";
         System.out.println("Received: (Q:" + INCOMING_QUEUE + ")\n" + message);
         System.out.println();
         System.out.println("Poem complete: \n" + message + "\n" + sLine3);
         System.out.println();
-
     }
 }

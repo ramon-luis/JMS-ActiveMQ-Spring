@@ -24,6 +24,19 @@
 
 	<dependencies>
 
+        <!--UNCOMMENT BELOW TO USE ACTIVEMQ ONLY-->
+
+        <!--&lt;!&ndash;activeMQ dependencies&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.activemq</groupId>-->
+            <!--<artifactId>activemq-all</artifactId>-->
+            <!--<version>5.14.0</version>-->
+        <!--</dependency>-->
+
+
+
+        <!--UNCOMMENT BELOW TO USE SPRING-->
+
         <!--spring dependencies-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -35,13 +48,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!--activeMQ dependencies-->
-		<!--<dependency>-->
-			<!--<groupId>org.apache.activemq</groupId>-->
-			<!--<artifactId>activemq-all</artifactId>-->
-			<!--<version>5.14.0</version>-->
-		<!--</dependency>-->
 
         <!--spring boot activeMQ dependencies-->
 		<dependency>
