@@ -24,7 +24,7 @@ public class Driver {
         // queue name
         String sDontMindQueue = "DON'T MIND QUEUE";
         String sDoMindQueue = "DO MIND QUEUE";
-        String sDifferentQueue = "NOT INTERESTED QUEUE";
+        String sNotInterestedQueue = "NOT INTERESTED QUEUE";
 
         // messages to send
         String sMessage1 = "Hola, Como estas?";
@@ -45,7 +45,7 @@ public class Driver {
         startNewThread(new MessageReceiver(sDontMindQueue), false);
         startNewThread(new MessageReceiver(sDontMindQueue), false);
         startNewThread(new MessageReceiver(sDontMindQueue), false);
-        startNewThread(new MessageReceiver(sDifferentQueue), false);  // listening on different queue
+        startNewThread(new MessageReceiver(sNotInterestedQueue), false);  // listening on different queue
     }
 
 

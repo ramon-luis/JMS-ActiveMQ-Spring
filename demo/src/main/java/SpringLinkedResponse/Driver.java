@@ -67,6 +67,8 @@ public class Driver {
         System.out.println();
         System.out.println("**************************************");
         System.out.println("Will Ferrell shares a sentimental poem");
+        System.out.println("one line... ");
+        System.out.println("at a time... ");
         System.out.println("**************************************");
         System.out.println();
     }

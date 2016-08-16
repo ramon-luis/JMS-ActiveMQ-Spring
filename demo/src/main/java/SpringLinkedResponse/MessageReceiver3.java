@@ -26,8 +26,12 @@ public class MessageReceiver3 {
     public void receiveMessage(String message) {
         // do message actions
         String sLine3 = "who did this to you?";
+
+        // print console
         System.out.println("Received: (Q:" + INCOMING_QUEUE + ")\n" + message);
         System.out.println();
+
+        // final action
         System.out.println("Poem complete: \n" + message + "\n" + sLine3);
         System.out.println();
     }

@@ -79,7 +79,6 @@ class FXMLController implements Initializable {
         // create a message listener
         msgSender = new MessageSender(mContext);
 
-
         // send messages on enter
         txtAreaKanye.setOnKeyReleased(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {

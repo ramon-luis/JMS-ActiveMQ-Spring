@@ -28,6 +28,8 @@ public class MessageReceiver1 {
     public String receiveMessage(String message) {
         // do message actions
         String sLine2 = "a bruised apple at the grocery store,";
+
+        // print to console
         System.out.println();
         System.out.println("Received: (Q:" + INCOMING_QUEUE + ")\n" + message);
         System.out.println("Sent: (Q:" + OUTGOING_QUEUE + ")\n" + message  + "\n" + sLine2);
