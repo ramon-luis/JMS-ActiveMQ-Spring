@@ -2,22 +2,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<?import javafx.scene.text.Text?>
-
 <HBox fx:id="mHBox" prefWidth="800" prefHeight="500" xmlns:fx="http://javafx.com/fxml" >
-
-    <VBox fx:id="vbLeft" prefWidth="400" prefHeight="500">
-    <ListView fx:id="lstLeft" prefHeight="350" prefWidth="400"></ListView>
-    <TextArea fx:id="txtAreaLeft" prefHeight="125" prefWidth="400" wrapText="true"></TextArea>
-        <Button fx:id="btnLeft" prefHeight="25" prefWidth="400" text="Send"></Button>
+    <VBox fx:id="vbKanye" prefWidth="400" prefHeight="500">
+        <Label alignment="CENTER" prefWidth="400" style="-fx-font-style: oblique">Kanye</Label>
+        <ListView fx:id="lstKanye" prefHeight="400" prefWidth="400"></ListView>
+        <TextArea fx:id="txtAreaKanye" prefHeight="75" prefWidth="400" wrapText="true"></TextArea>
+        <Button fx:id="btnKanye" prefHeight="25" prefWidth="400" text="Send"></Button>
     </VBox>
-    <VBox fx:id="vbRight" prefWidth="400" prefHeight="500">
-    <ListView fx:id="lstRight" prefHeight="350" prefWidth="400"></ListView>
-    <TextArea fx:id="txtAreaRight" prefHeight="125" prefWidth="400" wrapText="true"></TextArea>
-        <Button fx:id="btnRight" prefHeight="25" prefWidth="400" text="Send"></Button>
-
+    <VBox fx:id="vbKim" prefWidth="400" prefHeight="500">
+        <Label alignment="CENTER" prefWidth="400" style="-fx-font-style: oblique">Kim</Label>
+        <ListView fx:id="lstKim" prefHeight="400" prefWidth="400"></ListView>
+        <TextArea fx:id="txtAreaKim" prefHeight="75" prefWidth="400" wrapText="true"></TextArea>
+        <Button fx:id="btnKim" prefHeight="25" prefWidth="400" text="Send"></Button>
     </VBox>
-
-
 </HBox>

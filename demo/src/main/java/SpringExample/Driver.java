@@ -19,8 +19,8 @@ import org.springframework.util.FileSystemUtils;
  * Be sure to update the POM file to use Spring & Spring-specific ActiveQM dependencies only before running this program.
  */
 
-@SpringBootApplication
-@EnableJms
+@SpringBootApplication  // define as a Spring Application
+@EnableJms  // enable JMS for Spring in this program
 public class Driver {
 
     private static final String QUEUE_NAME = "DRAKE'S BEST PICKUP LINES";

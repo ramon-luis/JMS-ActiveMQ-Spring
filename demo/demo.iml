@@ -14,6 +14,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/activeMQ_NoSpring" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/activeMQ_Spring" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/publishSubscribe" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

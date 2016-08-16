@@ -24,8 +24,8 @@ import org.springframework.util.FileSystemUtils;
  */
 
 
-@SpringBootApplication
-@EnableJms
+@SpringBootApplication  // define as a Spring Application
+@EnableJms  // enable JMS for Spring in this program
 public class Driver {
 
     private static final String QUEUE_1 = "LINE 1";
