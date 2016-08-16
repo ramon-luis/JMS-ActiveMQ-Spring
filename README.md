@@ -3,10 +3,12 @@
 This repo provides information about the Java Messaging System (JMS) using ActiveMQ and Spring.
 
 Materials include:
+
 * presentation that covers JMS, ActiveMQ, and Spring
 * simple lab projects that demonstrate how to use JMS, ActiveMQ, and Spring in Java8
 
-### Presentation ###
+
+### Presentation Topics ###
 * Messaging
 * JMS
 * ActiveMQ
