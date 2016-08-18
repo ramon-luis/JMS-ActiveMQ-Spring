@@ -121,8 +121,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="143" />
-    <option name="y" value="40" />
+    <option name="x" value="31" />
+    <option name="y" value="328" />
     <option name="width" value="1362" />
     <option name="height" value="745" />
   </component>
@@ -789,15 +789,15 @@
       <option name="presentableId" value="Default" />
       <updated>1471039051216</updated>
       <workItem from="1471039052607" duration="6506000" />
-      <workItem from="1471056107933" duration="52967000" />
+      <workItem from="1471056107933" duration="53219000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59473000" />
+    <option name="totallyTimeSpent" value="59725000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="143" y="40" width="1362" height="745" extended-state="0" />
+    <frame x="31" y="328" width="1362" height="745" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
