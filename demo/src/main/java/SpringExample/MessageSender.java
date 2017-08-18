@@ -5,6 +5,10 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+
 /**
  * MessageSender is NOT associated with a specific queue.  It's send message method can send messages to different
  * queues.  The JmsTemplate is a Spring helper class that does the work of creating connections, etc.
@@ -25,7 +29,12 @@ class MessageSender {
     // call to send messages to a queue
     void sendMessage(String sQueueName, String sMessage) {
         // create the message
-        MessageCreator messageCreator = session -> session.createTextMessage(sMessage);
+        MessageCreator messageCreator = new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                return session.createTextMessage(sMessage);
+            }
+        };
 
         // print to console
         System.out.println();
