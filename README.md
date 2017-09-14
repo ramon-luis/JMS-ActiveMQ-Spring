@@ -8,7 +8,7 @@ Materials include:
 * simple lab projects that demonstrate how to use JMS, ActiveMQ, and Spring in Java8
 
 <kbd>
-	<img src="https://github.com/ramon-luis/JMS-ActiveMQ-Spring/raw/master/demo/chatter-screenshot-1.png">
+	<img src="https://github.com/ramon-luis/JMS-ActiveMQ-Spring/raw/master/chatter-screenshot-1.png">
 </kbd>
 <br />
 <br />
